@@ -152,7 +152,7 @@ export default function Hero({ isVisible }: HeroProps) {
       {/* Location Pill — top on mobile, above name on desktop */}
       <div
         ref={pillRef}
-        className="absolute top-20 sm:top-24 left-5 sm:left-8 md:left-12 lg:left-24 z-20"
+        className="absolute top-[20%] sm:top-[20%] left-5 sm:left-8 md:left-12 lg:left-24 z-20"
       >
         <button
           type="button"
