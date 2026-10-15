@@ -1,52 +1,53 @@
-import type { Metadata } from 'next'
+import type { Metadata } from "next";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kurtgavin.vercel.app'
+const baseUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://kurtgavin.vercel.app";
 
 export const siteConfig = {
   url: baseUrl,
-  name: 'Kurt Gavin',
-  title: 'Kurt Gavin — Full Stack Software Engineer & AI Engineer',
+  name: "Kurt Gavin",
+  title: "Kurt Gavin — CTO, Software Engineer & AI Builder",
   description:
-    'Full Stack Software Engineer & AI Engineer crafting digital experiences that matter. Based in the Philippines. Specializing in React, Next.js, AI/ML, and modern web technologies.',
+    "Kurt Gavin, CTO at Third Code Solutions. Software engineering, applied AI and thoughtful design. Explore confidential enterprise projects, career experience and developer community field notes.",
   keywords: [
-    'Full Stack Developer',
-    'Software Engineer',
-    'AI Engineer',
-    'React Developer',
-    'Next.js Developer',
-    'TypeScript',
-    'Node.js',
-    'Python',
-    'Machine Learning',
-    'Web Development',
-    'Philippines',
-    'Freelance Developer',
-    'Kurt Gavin',
+    "Full Stack Developer",
+    "Software Engineer",
+    "AI Engineer",
+    "React Developer",
+    "Next.js Developer",
+    "TypeScript",
+    "Node.js",
+    "Python",
+    "Machine Learning",
+    "Web Development",
+    "Philippines",
+    "Freelance Developer",
+    "Kurt Gavin",
   ],
   author: {
-    name: 'Kurt Gavin',
-    email: 'kurtgavin.design@gmail.com',
-    phone: '+63 962 916 5786',
-    location: 'Philippines',
+    name: "Kurt Gavin",
+    email: "kurtgavin.design@gmail.com",
+    phone: "+63 962 916 5786",
+    location: "Philippines",
   },
   social: {
-    linkedin: 'https://www.linkedin.com/in/kurtgavin/',
-    github: 'https://github.com/kurtgav',
+    linkedin: "https://www.linkedin.com/in/kurtgavin/",
+    github: "https://github.com/kurtgav",
   },
-}
+};
 
 export function generatePageMetadata({
   title,
   description,
-  path = '',
+  path = "",
 }: {
-  title?: string
-  description?: string
-  path?: string
+  title?: string;
+  description?: string;
+  path?: string;
 }): Metadata {
-  const pageTitle = title || siteConfig.title
-  const pageDescription = description || siteConfig.description
-  const canonicalUrl = `${siteConfig.url}${path}`
+  const pageTitle = title || siteConfig.title;
+  const pageDescription = description || siteConfig.description;
+  const canonicalUrl = `${siteConfig.url}${path}`;
 
   return {
     title: pageTitle,
@@ -55,80 +56,94 @@ export function generatePageMetadata({
     authors: [{ name: siteConfig.author.name, url: siteConfig.url }],
     creator: siteConfig.author.name,
     publisher: siteConfig.author.name,
-    robots: 'index, follow',
+    robots: "index, follow",
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
-      type: 'website',
+      type: "website",
       url: canonicalUrl,
       title: pageTitle,
       description: pageDescription,
       siteName: siteConfig.name,
-      locale: 'en_US',
+      locale: "en_US",
+      images: [
+        {
+          url: `${siteConfig.url}/journal/zero-to-agent.jpg`,
+          width: 1600,
+          height: 898,
+          alt: "Kurt Gavin collaborating at a developer event",
+        },
+      ],
     },
     twitter: {
-      card: 'summary',
+      card: "summary_large_image",
+      images: [`${siteConfig.url}/journal/zero-to-agent.jpg`],
       title: pageTitle,
       description: pageDescription,
     },
-  }
+  };
 }
 
 export function generatePersonSchema() {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
+    "@context": "https://schema.org",
+    "@type": "Person",
     name: siteConfig.author.name,
     url: siteConfig.url,
     sameAs: [siteConfig.social.linkedin, siteConfig.social.github],
-    jobTitle: 'Full Stack Software Engineer & AI Engineer',
+    jobTitle: "Chief Technology Officer",
+    worksFor: {
+      "@type": "Organization",
+      name: "Third Code Solutions Inc.",
+      url: "https://thirdcodesolutions.com/",
+    },
     email: siteConfig.author.email,
     telephone: siteConfig.author.phone,
     address: {
-      '@type': 'PostalAddress',
-      addressCountry: 'PH',
+      "@type": "PostalAddress",
+      addressCountry: "PH",
     },
     knowsAbout: [
-      'Web Development',
-      'Full Stack Development',
-      'Artificial Intelligence',
-      'Machine Learning',
-      'React',
-      'Next.js',
-      'TypeScript',
-      'Python',
-      'Node.js',
+      "Web Development",
+      "Full Stack Development",
+      "Artificial Intelligence",
+      "Machine Learning",
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Python",
+      "Node.js",
     ],
-  }
+  };
 }
 
 export function generateWebsiteSchema() {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
+    "@context": "https://schema.org",
+    "@type": "WebSite",
     name: siteConfig.name,
     description: siteConfig.description,
     url: siteConfig.url,
     author: {
-      '@type': 'Person',
+      "@type": "Person",
       name: siteConfig.author.name,
     },
-    inLanguage: 'en-US',
-  }
+    inLanguage: "en-US",
+  };
 }
 
 export function generateBreadcrumbSchema(
-  items: { name: string; url: string }[]
+  items: { name: string; url: string }[],
 ) {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
     itemListElement: items.map((item, index) => ({
-      '@type': 'ListItem',
+      "@type": "ListItem",
       position: index + 1,
       name: item.name,
       item: `${siteConfig.url}${item.url}`,
     })),
-  }
+  };
 }

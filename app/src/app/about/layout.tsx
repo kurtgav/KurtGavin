@@ -1,9 +1,9 @@
 import { generatePageMetadata, generateBreadcrumbSchema } from '@/lib/seo'
 
 export const metadata = generatePageMetadata({
-  title: 'About Kurt Gavin — Full Stack Software Engineer & AI Engineer',
+  title: 'About Kurt Gavin — CTO, Engineer & Designer',
   description:
-    'Learn about Kurt Gavin, a Full Stack Software Engineer & AI Engineer based in the Philippines. Specializing in React, Next.js, TypeScript, Python, and AI-powered solutions.',
+    'Meet Kurt Gavin, CTO at Third Code Solutions. Explore his journey through UI/UX design, full-stack software engineering, applied AI and technology leadership.',
   path: '/about',
 })
 
