@@ -21,3 +21,8 @@ Status: Implementation in progress. Verification and release pending.
 - Source and TypeScript reviewers found no blocking issues after removal of unsupported registered-mark symbol and mobile focus correction.
 - No standalone ESLint configuration exists; no full automated WCAG conformance claim is made.
 - Deployment pending. Next action: push verified revision and verify Vercel production.
+
+## Release
+- Main redesign a6d667e pushed to origin/main; Vercel production deployment dpl_B2EjUTpiUDUashk8x3ZSdtjhqUTh reached READY and aliased kurtgavin.vercel.app.
+- Public domain verified in browser: new CTO title, six NDA cards, seven photo entries.
+- Final visual follow-up: AWS thumbnail focal point adjusted from 65% to 50% to keep the subject's head visible. Rebuilt successfully, reviewed and visually verified. No image content changed.

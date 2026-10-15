@@ -148,7 +148,7 @@ export const journal = [
     alt: "Kurt standing beside an illuminated AWS sign at an event venue.",
     description:
       "A moment at an AWS-branded venue. Getting out of the day-to-day build routine and spending time around the wider technology community.",
-    position: "50% 65%",
+    position: "50% 50%",
   },
   {
     image: "/journal/agora-hackathon.jpg",
