@@ -4,60 +4,11 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Magnetic from '@/components/ui/Magnetic';
+import { portfolioProjects } from '@/data/portfolio';
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface Project {
-  id: number;
-  title: string;
-  category: string;
-  year: string;
-  image: string;
-  link: string;
-}
-
-const projects: Project[] = [
-  {
-    id: 1,
-    title: 'Ascend AI',
-    category: 'Stealth SaaS Project',
-    year: '2024',
-    image: '/ascend-ai.png',
-    link: '#',
-  },
-  {
-    id: 2,
-    title: 'BlockChain Website',
-    category: 'Landing Page',
-    year: '2024',
-    image: '/blockchain-web.png',
-    link: '#',
-  },
-  {
-    id: 3,
-    title: 'Ni Hao',
-    category: 'Face Recognition System',
-    year: '2023',
-    image: '/NiHao.jpg',
-    link: '#',
-  },
-  {
-    id: 4,
-    title: 'Wizard Connect',
-    category: 'University Matching WebApp',
-    year: '2023',
-    image: '/wizard-match.png',
-    link: 'https://www.facebook.com/photo/?fbid=1326642939499198&set=a.455844426579058',
-  },
-  {
-    id: 5,
-    title: 'Jjikja Film',
-    category: 'Photo Strip WebApp',
-    year: '2025',
-    image: '/jjikja-film.png',
-    link: 'https://jjikja-film.vercel.app/',
-  },
-];
+const projects = portfolioProjects.filter(project => project.nda || project.id <= 5);
 
 export default function Works() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -160,7 +111,7 @@ export default function Works() {
                 onMouseEnter={() => setHoveredProject(project.id)}
                 onMouseLeave={() => setHoveredProject(null)}
               >
-                <a href={project.link} target={project.link !== '#' ? '_blank' : undefined} rel={project.link !== '#' ? 'noopener noreferrer' : undefined} className="block w-full py-8 sm:py-10 md:py-12 lg:py-14 px-2 md:px-4">
+                <a href={project.link === '#' ? '/work/' : project.link} target={project.link.startsWith('https://') ? '_blank' : undefined} rel={project.link.startsWith('https://') ? 'noopener noreferrer' : undefined} className="block w-full py-8 sm:py-10 md:py-12 lg:py-14 px-2 md:px-4">
                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
                     <div className="flex-1 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-x-2 md:group-hover:-translate-x-4">
                       <h4 className="text-[28px] sm:text-[36px] md:text-[50px] lg:text-[65px] xl:text-[75.6px] font-[450] font-display text-fg leading-[1.05] transition-opacity duration-500 group-hover:opacity-60">
@@ -169,7 +120,7 @@ export default function Works() {
                     </div>
                     <div className="flex items-center gap-4 sm:gap-8 md:gap-12 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-2 md:group-hover:translate-x-4">
                       <p className="text-xs sm:text-sm text-muted font-body font-medium transition-opacity duration-500 group-hover:opacity-60">
-                        {project.category}
+                        {project.category}{project.nda ? ' · NDA' : ''}
                       </p>
                       {/* Mobile image thumbnail */}
                       <div className="sm:hidden w-16 h-16 rounded-md overflow-hidden flex-shrink-0">

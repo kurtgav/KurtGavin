@@ -147,7 +147,7 @@ export default function Hero({ isVisible }: HeroProps) {
       </div>
 
       {/* Accessible heading */}
-      <h1 className="sr-only">Kurt Gavin — Full Stack Software Engineer &amp; AI Engineer</h1>
+      <h1 className="sr-only">Kurt Gavin — CTO, Full Stack Software Engineer &amp; AI Engineer</h1>
 
       {/* Location Pill — top on mobile, above name on desktop */}
       <div
@@ -213,7 +213,7 @@ export default function Hero({ isVisible }: HeroProps) {
           ref={subtitleRef}
           className="hero-subtitle text-white/70 font-body"
         >
-          Full Stack Software Engineer &amp; AI Engineer
+          CTO · Full Stack Software Engineer &amp; AI Engineer
         </p>
       </div>
 
@@ -226,7 +226,7 @@ export default function Hero({ isVisible }: HeroProps) {
           </svg>
         </div>
         <h4 className="text-[18px] sm:text-[22px] lg:text-[28px] font-display font-[450] text-white/80 leading-[1.4]">
-          Currently Building a<br />funded Startup platform
+          Currently CTO at<br /><a href="https://thirdcodesolutions.com/" target="_blank" rel="noopener noreferrer">Third Code Solutions</a>
         </h4>
       </div>
 

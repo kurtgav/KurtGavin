@@ -1,4 +1,4 @@
-export const projects = [
+const confidentialProjects = [
   {
     title: "Construction ERP",
     category: "Enterprise systems",
@@ -186,4 +186,107 @@ export const journal = [
       "Learning from a session on AI in the B2B world, with a focus on ethics, governance and the human imperative. A reminder that engineering decisions reach beyond the code.",
     position: "50% 60%",
   },
+];
+
+export interface PortfolioProject {
+  id: number; title: string; category: string; year: string; image: string; link: string; description: string; nda?: boolean; slug?: string;
+}
+
+const existingProjects: PortfolioProject[] = [
+  {
+    id: 1,
+    title: 'Ascend AI',
+    category: 'Stealth SaaS Project',
+    year: '2024',
+    image: '/ascend-ai.png',
+    link: '#',
+    description: 'AI-powered SaaS platform designed to streamline workflows and elevate productivity through intelligent automation.',
+  },
+  {
+    id: 2,
+    title: 'BlockChain Website',
+    category: 'Landing Page',
+    year: '2024',
+    image: '/blockchain-web.png',
+    link: '#',
+    description: 'Immersive landing page for a blockchain venture, blending Web3 aesthetics with crystal-clear messaging.',
+  },
+  {
+    id: 3,
+    title: 'Ni Hao',
+    category: 'Face Recognition System',
+    year: '2023',
+    image: '/NiHao.jpg',
+    link: '#',
+    description: 'Real-time face recognition system built with computer vision and deep learning for secure authentication.',
+  },
+  {
+    id: 4,
+    title: 'Wizard Connect',
+    category: 'University Matching WebApp',
+    year: '2023',
+    image: '/wizard-match.png',
+    link: 'https://www.facebook.com/photo/?fbid=1326642939499198&set=a.455844426579058',
+    description: 'Intelligent university matching platform connecting students with their ideal academic programs.',
+  },
+  {
+    id: 5,
+    title: 'Jjikja Film',
+    category: 'Photo Strip WebApp',
+    year: '2025',
+    image: '/jjikja-film.png',
+    link: 'https://jjikja-film.vercel.app/',
+    description: 'Retro-inspired photo strip web app capturing moments with a nostalgic analog film aesthetic.',
+  },
+  {
+    id: 6,
+    title: 'Project Ayuda',
+    category: 'Community Platform',
+    year: '2023',
+    image: '/project-ayuda.jpg',
+    link: '#',
+    description: 'Community-driven aid platform connecting donors with those in need during crisis situations.',
+  },
+  {
+    id: 7,
+    title: 'TripSync',
+    category: 'Travel Application',
+    year: '2024',
+    image: '/project-tripsync.jpg',
+    link: '#',
+    description: 'Collaborative travel planning tool that syncs itineraries, budgets, and experiences in real-time.',
+  },
+  {
+    id: 8,
+    title: 'NeuBrain',
+    category: 'AI Research Tool',
+    year: '2024',
+    image: '/project-neubrain.jpg',
+    link: '#',
+    description: 'Neural network visualization tool for researchers to explore, debug, and optimize AI model architectures.',
+  },
+  {
+    id: 9,
+    title: 'WellHealth',
+    category: 'Health & Wellness App',
+    year: '2024',
+    image: '/project-wellhealth.jpg',
+    link: '#',
+    description: 'Holistic health tracking application combining fitness metrics, nutrition logging, and mental wellness.',
+  },
+];
+
+export const portfolioProjects: PortfolioProject[] = [
+  ...confidentialProjects.map((project, index) => ({
+    id: 100 + index,
+    title: project.title,
+    category: project.category,
+    year: 'NDA',
+    image: '/project-confidential.svg',
+    slug: ['construction-erp', 'independent-accounting', 'prediction-market', 'casino-agent-system', 'geo-platform', 'ai-initiatives'][index],
+    link: '/work/#' + ['construction-erp', 'independent-accounting', 'prediction-market', 'casino-agent-system', 'geo-platform', 'ai-initiatives'][index],
+    description: project.description,
+    nda: true,
+  })),
+  ...existingProjects,
 ];

@@ -3,7 +3,7 @@ import { generatePageMetadata, generateBreadcrumbSchema } from '@/lib/seo'
 export const metadata = generatePageMetadata({
   title: 'Work & Projects — Kurt Gavin Portfolio',
   description:
-    'Explore six confidential project areas by Kurt Gavin: construction ERP, private-sector accounting, prediction markets, casino agent systems, GEO and applied AI.',
+    'Explore Kurt Gavin\'s software portfolio, including six anonymous NDA project areas: construction ERP, accounting, prediction markets, casino agent systems, GEO and AI.',
   path: '/work',
 })
 

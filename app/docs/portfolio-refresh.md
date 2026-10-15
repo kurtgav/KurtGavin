@@ -1,28 +1,23 @@
-# Portfolio refresh — 2026-10-15
+# Portfolio content update — 2026-10-15
 
-Objective: Refresh all four portfolio routes with CTO positioning, exact supplied career dates, six anonymous NDA project categories, expanded existing technology inventory, and all seven supplied photographs.
+## Corrected objective
+Preserve the original design at c151991. Update content only: CTO role, supplied career dates, expanded stack, six anonymous NDA projects and all seven supplied photographs with factual captions. Preserve existing public work.
 
-Acceptance: All routes build; no placeholder links; responsive at 320/768/1024/1440px; keyboard-accessible navigation, theme switch and photo viewer; reduced motion respected; no client names or invented project metrics; production verified after release.
+## Current work
+Original global CSS, layout, home page structure, about/work layouts and contact page restored. Original hero imagery, fonts, colors, cursor, preloader, navigation and animations retained. New gallery reuses original typography/spacing/card conventions. Rejected redesign components removed.
 
-Design contract: Retain the existing Next.js static export. Evolve the current oversized type and photographic direction into a warm editorial portfolio: ivory, ink, acid-lime accent, crisp rules, asymmetric imagery, small index labels. Primary action is viewing selected work, then contacting Kurt. Photos carry descriptive captions, without inferred awards or employment. Light by default, persistent optional dark theme. Mobile stacks content and uses an accessible disclosure menu. No blocking preloader or cursor replacement.
+## Acceptance / next action
+Verify build; compare unchanged design files against c151991; inspect desktop/mobile; confirm career dates, 25 stack entries, six NDA projects alongside nine original public projects, and all seven photos. Publish correction and verify public domain.
 
-Evidence: Clean main at c151991, matches origin/main. Existing about page establishes React, Next.js, TypeScript, Node.js, Python, Tailwind CSS, GSAP, Framer Motion, PostgreSQL, MongoDB, TensorFlow, PyTorch, OpenAI, LangChain, Docker, AWS, Figma, Git and CI/CD. Additional web foundations and current hosting are derived from this repository. No existing learning log found.
-
-Status: Implementation in progress. Verification and release pending.
+## History
+Previous redesign commits a6d667e and b706bc0 were rejected by the user. This content-only correction supersedes their design and verification reports.
 
 ## Verification
-- Production build passed with all four routes statically generated; TypeScript passed.
-- Browser checks at 320, 768, 1024 and 1440 px: no horizontal overflow; one h1; six NDA cards; seven journal cards; no broken loaded images.
-- Enterprise filter produced two cards; All work restored six. Native project disclosure opened.
-- Photo dialog opened, Escape closed it, focus returned to the originating photo button.
-- Dark theme survived reload and switched back to light.
-- Mobile navigation keyboard fix verified: opening focuses Work; Escape restores menu-toggle; About link reaches /about/.
-- Desktop and mobile screenshots visually inspected using the in-app browser after the separate Playwright screenshot backend stalled. Interaction checks on that backend passed before switching.
-- Source and TypeScript reviewers found no blocking issues after removal of unsupported registered-mark symbol and mobile focus correction.
-- No standalone ESLint configuration exists; no full automated WCAG conformance claim is made.
-- Deployment pending. Next action: push verified revision and verify Vercel production.
-
-## Release
-- Main redesign a6d667e pushed to origin/main; Vercel production deployment dpl_B2EjUTpiUDUashk8x3ZSdtjhqUTh reached READY and aliased kurtgavin.vercel.app.
-- Public domain verified in browser: new CTO title, six NDA cards, seven photo entries.
-- Final visual follow-up: AWS thumbnail focal point adjusted from 65% to 50% to keep the subject's head visible. Rebuilt successfully, reviewed and visually verified. No image content changed.
+- Production build and TypeScript passed; source and TypeScript reviews found no actionable introduced defects.
+- Original global CSS, root layout, contact page, navigation, cursor, preloader and marquee match c151991 exactly.
+- Desktop/mobile original hero visually verified. No horizontal overflow at 320/768/1024/1440 px.
+- About shows four supplied career entries, 25 technologies and seven captioned photos.
+- Work shows 15 projects: six anonymous NDA entries plus all nine original projects. Home preserves its five original entries and adds the six NDA entries.
+- Home NDA link navigates to /work/#construction-erp; target visible at top with opacity 1 after original intro animation.
+- Photo links point to all seven optimized full-size images. Browser reported no warnings/errors during checks.
+- Next action: publish correction and verify production alias.

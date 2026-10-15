@@ -6,7 +6,7 @@ const baseUrl =
 export const siteConfig = {
   url: baseUrl,
   name: "Kurt Gavin",
-  title: "Kurt Gavin — CTO, Software Engineer & AI Builder",
+  title: "Kurt Gavin — CTO, Software Engineer & AI Engineer",
   description:
     "Kurt Gavin, CTO at Third Code Solutions. Software engineering, applied AI and thoughtful design. Explore confidential enterprise projects, career experience and developer community field notes.",
   keywords: [
