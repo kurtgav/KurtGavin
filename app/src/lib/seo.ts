@@ -1,7 +1,5 @@
-import type { Metadata } from "next";
-
 const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://kurtgavin.vercel.app";
+  import.meta.env.PUBLIC_SITE_URL || "https://kurtgavin.vercel.app";
 
 export const siteConfig = {
   url: baseUrl,
@@ -44,7 +42,7 @@ export function generatePageMetadata({
   title?: string;
   description?: string;
   path?: string;
-}): Metadata {
+}) {
   const pageTitle = title || siteConfig.title;
   const pageDescription = description || siteConfig.description;
   const canonicalUrl = `${siteConfig.url}${path}`;

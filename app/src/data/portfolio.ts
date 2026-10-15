@@ -97,6 +97,7 @@ export const stack = [
   {
     title: "Interfaces & interaction",
     items: [
+      "Astro",
       "React",
       "Next.js",
       "TypeScript",
@@ -105,6 +106,7 @@ export const stack = [
       "CSS",
       "Tailwind CSS",
       "GSAP",
+      "Lenis",
       "Framer Motion",
     ],
   },
@@ -282,7 +284,7 @@ export const portfolioProjects: PortfolioProject[] = [
     title: project.title,
     category: project.category,
     year: 'NDA',
-    image: '/project-confidential.svg',
+    image: '/projects/' + ['construction-erp', 'independent-accounting', 'prediction-market', 'casino-agent-system', 'geo-platform', 'ai-initiatives'][index] + '.jpg',
     slug: ['construction-erp', 'independent-accounting', 'prediction-market', 'casino-agent-system', 'geo-platform', 'ai-initiatives'][index],
     link: '/work/#' + ['construction-erp', 'independent-accounting', 'prediction-market', 'casino-agent-system', 'geo-platform', 'ai-initiatives'][index],
     description: project.description,

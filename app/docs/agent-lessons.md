@@ -13,3 +13,17 @@
 - Remedy: Restore the original design from c151991 and integrate only the requested career, stack, anonymous projects and photo content into existing patterns.
 - Prevention: AGENTS.md now requires explicit authorization for a redesign. Compare global styles, hero imagery, navigation, animation and contact layout with the original before release.
 - Scope/evidence: This portfolio; c151991 is the original design baseline. The earlier mobile-menu lesson concerns a removed redesign component and is no longer applicable to the restored navigation.
+
+## 2026-10-15 — Scope Astro diagnostics to source
+- Trigger: Initial migration check exhausted the heap while scanning the old static export.
+- Root cause: Broad TypeScript includes with allowJs pulled generated out/_next bundles into diagnostics.
+- Remedy: Include src/**/* and .astro/types.d.ts; exclude dist, out, .next and node_modules.
+- Prevention/scope: Preserve source-scoped includes when changing framework tooling; generated output is not source.
+- Evidence: app/tsconfig.json; npm run check completed with 0 errors and 0 warnings after the scope correction.
+
+## 2026-10-15 — Match native links to Astro slash policy
+- Trigger: Mobile menu links failed after replacing Next Link with native anchors.
+- Root cause: Astro trailingSlash=always serves /about/; the inherited /about link returned 404 in production preview.
+- Remedy: Add trailing slashes to portfolio routes and normalize active navigation paths. Native navigation owns menu teardown.
+- Verification: Browser navigated Work hash → About → Contact on mobile after correction; npm run verify passes all ten pages.
+- Prevention/scope: scripts/verify-static.mjs rejects slashless page links, missing routes/assets and residual Next runtime. It reproduced 15 bad links before the fix, then passed after rebuild.

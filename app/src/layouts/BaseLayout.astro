@@ -1,0 +1,55 @@
+---
+import '../styles/globals.css';
+import 'lenis/dist/lenis.css';
+import { generatePageMetadata, generatePersonSchema, generateWebsiteSchema, generateBreadcrumbSchema } from '../lib/seo';
+
+interface Props {
+  title?: string;
+  description?: string;
+  path?: string;
+  breadcrumb?: string;
+}
+const { title, description, path = '/', breadcrumb } = Astro.props;
+const metadata = generatePageMetadata({ title, description, path });
+const image = metadata.openGraph.images[0];
+const schemas = [generatePersonSchema(), generateWebsiteSchema()];
+const breadcrumbSchema = breadcrumb ? generateBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: breadcrumb, url: path }]) : null;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#1C1D20" />
+    <title>{metadata.title}</title>
+    <meta name="description" content={metadata.description} />
+    <meta name="keywords" content={metadata.keywords.join(', ')} />
+    <meta name="author" content={metadata.creator} />
+    <meta name="robots" content={metadata.robots} />
+    <link rel="canonical" href={metadata.alternates.canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={metadata.openGraph.url} />
+    <meta property="og:title" content={metadata.title} />
+    <meta property="og:description" content={metadata.description} />
+    <meta property="og:site_name" content={metadata.openGraph.siteName} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content={image.url} />
+    <meta property="og:image:width" content={String(image.width)} />
+    <meta property="og:image:height" content={String(image.height)} />
+    <meta property="og:image:alt" content={image.alt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={metadata.title} />
+    <meta name="twitter:description" content={metadata.description} />
+    <meta name="twitter:image" content={image.url} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/manifest.json" />
+    {schemas.map(schema => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}
+    {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}
+  </head>
+  <body class="grain-overlay">
+    <slot />
+  </body>
+</html>

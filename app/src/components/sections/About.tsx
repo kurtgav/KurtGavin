@@ -4,7 +4,6 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Magnetic from '@/components/ui/Magnetic';
-import Link from 'next/link';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -107,12 +106,12 @@ export default function About() {
             <div ref={buttonRef} className="self-start">
               <Magnetic>
                 <div className="btn btn-circle btn-solid-dark w-[140px] h-[140px] sm:w-[160px] sm:h-[160px] md:w-[172.8px] md:h-[172.8px]">
-                  <Link href="/about" className="btn-click w-full h-full flex items-center justify-center">
+                  <a href="/about/" className="btn-click w-full h-full flex items-center justify-center">
                     <div className="btn-fill" />
                     <span className="btn-text">
                       <span className="btn-text-inner text-sm sm:text-base tracking-wide font-body">About me</span>
                     </span>
-                  </Link>
+                  </a>
                 </div>
               </Magnetic>
             </div>

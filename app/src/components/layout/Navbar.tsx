@@ -1,20 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 import Magnetic from '@/components/ui/Magnetic';
 
 interface NavbarProps {
   isVisible: boolean;
   variant?: 'light' | 'dark';
+  pathname?: string;
 }
 
 const navLinks = [
-  { label: 'Work', href: '/work' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Work', href: '/work/' },
+  { label: 'About', href: '/about/' },
+  { label: 'Contact', href: '/contact/' },
 ];
 
 const socialLinks = [
@@ -28,14 +27,14 @@ const menuNavLinks = [
   ...navLinks,
 ];
 
-export default function Navbar({ isVisible, variant = 'dark' }: NavbarProps) {
+export default function Navbar({ isVisible, variant = 'dark', pathname = '/' }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
-  const pathname = usePathname();
 
   // On homepage, text is white (over hero image). On sub-pages, depends on variant.
-  const isHome = pathname === '/';
+  const currentPath = pathname.replace(/\/+$/, '') + '/';
+  const isHome = currentPath === '/';
   const textColor = isHome || variant === 'dark' ? 'text-white' : 'text-fg';
   const scrolledTextColor = isScrolled && !isHome ? 'text-fg' : 'text-white';
 
@@ -83,7 +82,7 @@ export default function Navbar({ isVisible, variant = 'dark' }: NavbarProps) {
         >
           <Magnetic range={15}>
             <div className="btn btn-link btn-left-top">
-              <Link
+              <a
                 href="/"
                 className={`btn-click flex items-center gap-1 group ${textColor}`}
               >
@@ -98,7 +97,7 @@ export default function Navbar({ isVisible, variant = 'dark' }: NavbarProps) {
                     </span>
                   </div>
                 </div>
-              </Link>
+              </a>
             </div>
           </Magnetic>
         </motion.div>
@@ -183,16 +182,16 @@ export default function Navbar({ isVisible, variant = 'dark' }: NavbarProps) {
                   className={`btn btn-link group ${textColor}`}
                 >
                   <Magnetic range={20}>
-                    <Link href={item.href} className="btn-click">
+                    <a href={item.href} className="btn-click">
                       <div className="flex flex-col overflow-hidden h-5 relative">
-                        <span className={`btn-text-inner text-[15px] font-medium transition-transform duration-300 group-hover:-translate-y-full font-body ${pathname === item.href ? 'opacity-60' : ''}`}>
+                        <span className={`btn-text-inner text-[15px] font-medium transition-transform duration-300 group-hover:-translate-y-full font-body ${currentPath === item.href ? 'opacity-60' : ''}`}>
                           {item.label}
                         </span>
                         <span className="btn-text-inner absolute top-full text-[15px] font-medium transition-transform duration-300 group-hover:-translate-y-full font-body">
                           {item.label}
                         </span>
                       </div>
-                    </Link>
+                    </a>
                   </Magnetic>
                 </motion.li>
               ))}
@@ -245,18 +244,17 @@ export default function Navbar({ isVisible, variant = 'dark' }: NavbarProps) {
                       initial="closed"
                       animate="open"
                     >
-                      <Link
+                      <a
                         href={item.href}
-                        onClick={() => setIsMenuOpen(false)}
                         className="group flex items-center gap-4"
                       >
                         <span className="text-white/30 text-sm font-body tabular-nums">
                           {String(i + 1).padStart(2, '0')}
                         </span>
-                        <span className={`text-[clamp(2.5rem,6vw,5rem)] font-display text-white leading-[1.1] tracking-tight transition-colors duration-300 hover:text-white/60 ${pathname === item.href ? 'text-white/50' : ''}`}>
+                        <span className={`text-[clamp(2.5rem,6vw,5rem)] font-display text-white leading-[1.1] tracking-tight transition-colors duration-300 hover:text-white/60 ${currentPath === item.href ? 'text-white/50' : ''}`}>
                           {item.label}
                         </span>
-                      </Link>
+                      </a>
                     </motion.li>
                   ))}
                 </ul>

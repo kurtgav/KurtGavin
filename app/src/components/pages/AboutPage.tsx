@@ -1,5 +1,3 @@
-'use client';
-
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -7,8 +5,7 @@ import Navbar from '@/components/layout/Navbar';
 import Cursor from '@/components/layout/Cursor';
 import Magnetic from '@/components/ui/Magnetic';
 import Contact from '@/components/sections/Contact';
-import { initLenis } from '@/lib/lenis';
-import Link from 'next/link';
+import { useSmoothScroll } from '@/lib/useSmoothScroll';
 import { experience, stack } from '@/data/portfolio';
 import PhotoJournal from '@/components/sections/PhotoJournal';
 
@@ -17,11 +14,10 @@ gsap.registerPlugin(ScrollTrigger);
 const skills = stack.flatMap(group => group.items.map(name => ({ name, category: group.title })));
 
 export default function AboutPage() {
+  useSmoothScroll();
   const pageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    initLenis();
-
     const ctx = gsap.context(() => {
       // Hero text reveal
       gsap.fromTo(
@@ -129,7 +125,7 @@ export default function AboutPage() {
   return (
     <>
       <Cursor />
-      <Navbar isVisible={true} variant="light" />
+      <Navbar pathname="/about" isVisible={true} variant="light" />
 
       <main ref={pageRef}>
         {/* Hero Section */}
@@ -200,26 +196,26 @@ export default function AboutPage() {
                   <div className="flex flex-wrap gap-3 sm:gap-4">
                     <Magnetic>
                       <div className="btn btn-round">
-                        <Link href="/work" className="btn-click block">
+                        <a href="/work/" className="btn-click block">
                           <div className="btn-fill" />
                           <span className="btn-text">
                             <span className="btn-text-inner text-xs sm:text-sm tracking-[0.15em] uppercase font-body">
                               View my work
                             </span>
                           </span>
-                        </Link>
+                        </a>
                       </div>
                     </Magnetic>
                     <Magnetic>
                       <div className="btn btn-round">
-                        <Link href="/contact" className="btn-click block">
+                        <a href="/contact/" className="btn-click block">
                           <div className="btn-fill" />
                           <span className="btn-text">
                             <span className="btn-text-inner text-xs sm:text-sm tracking-[0.15em] uppercase font-body">
                               Get in touch
                             </span>
                           </span>
-                        </Link>
+                        </a>
                       </div>
                     </Magnetic>
                   </div>

@@ -40,3 +40,6 @@ tmp/
 
 # typescript
 next-env.d.ts
+
+# Astro generated types
+.astro/

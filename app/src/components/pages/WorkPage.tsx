@@ -1,5 +1,3 @@
-'use client';
-
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -7,19 +5,17 @@ import Navbar from '@/components/layout/Navbar';
 import Cursor from '@/components/layout/Cursor';
 import Magnetic from '@/components/ui/Magnetic';
 import Contact from '@/components/sections/Contact';
-import { initLenis } from '@/lib/lenis';
-import Link from 'next/link';
+import { useSmoothScroll } from '@/lib/useSmoothScroll';
 import { portfolioProjects as projects } from '@/data/portfolio';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function WorkPage() {
+  useSmoothScroll();
   const heroRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    initLenis();
-
     const ctx = gsap.context(() => {
       // Hero text reveal
       gsap.fromTo(
@@ -63,7 +59,7 @@ export default function WorkPage() {
       });
 
       // Parallax on project images
-      const images = projectsRef.current?.querySelectorAll('.project-card-image img') || [];
+      const images = projectsRef.current?.querySelectorAll('.project-card-image img[data-parallax]') || [];
       images.forEach((img) => {
         gsap.to(img, {
           yPercent: -8,
@@ -84,7 +80,7 @@ export default function WorkPage() {
   return (
     <>
       <Cursor />
-      <Navbar isVisible={true} variant="light" />
+      <Navbar pathname="/work" isVisible={true} variant="light" />
 
       <main>
         {/* Hero Section */}
@@ -141,13 +137,13 @@ export default function WorkPage() {
           <div className="max-w-[1600px] mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16">
               {projects.map((project, index) => {
-                const Card = project.nda || project.link === '#' ? 'article' : 'a';
+                const Card = project.link === '#' ? 'article' : 'a';
                 return (
                 <Card
                   key={project.id}
                   id={project.slug}
-                  href={Card === 'a' ? project.link : undefined}
-                  target={Card === 'a' ? '_blank' : undefined}
+                  href={Card === 'a' ? (project.nda ? `/concepts/${project.slug}/` : project.link) : undefined}
+                  target={Card === 'a' && !project.nda ? '_blank' : undefined}
                   rel={Card === 'a' ? 'noopener noreferrer' : undefined}
                   className={`project-card group block ${index === 0 ? 'md:col-span-2' : ''}`}
                 >
@@ -155,9 +151,11 @@ export default function WorkPage() {
                   <div className={`project-card-image relative overflow-hidden rounded-sm mb-5 sm:mb-6 ${index === 0 ? 'aspect-[16/8]' : 'aspect-[4/3]'}`}>
                     <img
                       src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05] will-change-transform"
-                      style={{ transform: 'scale(1.1)' }}
+                      alt={project.nda ? `${project.title} — original concept interface with fictional data` : project.title}
+                      loading={index === 0 ? 'eager' : 'lazy'}
+                      data-parallax={project.nda ? undefined : true}
+                      className={project.nda ? 'w-full h-full object-contain bg-[#f5f7fa]' : 'w-full h-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05] will-change-transform'}
+                      style={project.nda ? undefined : { transform: 'scale(1.1)' }}
                     />
                     {/* Overlay on hover */}
                     <div className="absolute inset-0 bg-fg/0 group-hover:bg-fg/10 transition-colors duration-700" />
@@ -165,7 +163,7 @@ export default function WorkPage() {
                     {/* View Project pill */}
                     <div className="absolute bottom-4 sm:bottom-6 right-4 sm:right-6 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
                       <div className="bg-white/90 backdrop-blur-sm rounded-full px-4 sm:px-5 py-2 sm:py-2.5">
-                        <span className="text-fg text-xs sm:text-sm font-body font-medium tracking-wide">{project.nda ? 'Confidential · NDA' : project.link === '#' ? 'Project overview' : 'View Project'}</span>
+                        <span className="text-fg text-xs sm:text-sm font-body font-medium tracking-wide">{project.nda ? 'Explore concept screen' : project.link === '#' ? 'Project overview' : 'View Project'}</span>
                       </div>
                     </div>
                   </div>
@@ -179,6 +177,7 @@ export default function WorkPage() {
                       <p className="text-sm sm:text-[15px] text-fg/60 font-body leading-relaxed max-w-md">
                         {project.description}
                       </p>
+                      {project.nda && <p className="text-xs text-fg/70 font-body mt-3">Illustrative interface · fictional data · View full screen ↗</p>}
                     </div>
                     <div className="flex items-center gap-3 sm:gap-4 flex-shrink-0 sm:pt-1">
                       <span className="text-[11px] sm:text-xs text-muted font-body uppercase tracking-[0.15em]">
@@ -193,7 +192,7 @@ export default function WorkPage() {
               );})}
             </div>
 
-            <p className="text-sm text-fg/70 font-body leading-relaxed mt-12 max-w-2xl">The six confidential projects are shared as anonymous overviews. Client names, source code and private implementation details remain protected by NDA.</p>
+            <p className="text-sm text-fg/70 font-body leading-relaxed mt-12 max-w-2xl">The six confidential projects are shared as anonymous overviews. Screens are original concept visualizations with fictional data, not actual client interfaces or verified feature lists. Client names, source code and private designs remain protected by NDA.</p>
 
             {/* More Work CTA */}
             <div className="flex justify-center mt-20 sm:mt-24 md:mt-32">

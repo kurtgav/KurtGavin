@@ -1,5 +1,3 @@
-'use client';
-
 import { useEffect, useState } from 'react';
 import Preloader from '@/components/sections/Preloader';
 import Navbar from '@/components/layout/Navbar';
@@ -10,9 +8,10 @@ import Works from '@/components/sections/Works';
 import About from '@/components/sections/About';
 import Contact from '@/components/sections/Contact';
 import PhotoJournal from '@/components/sections/PhotoJournal';
-import { initLenis } from '@/lib/lenis';
+import { useSmoothScroll } from '@/lib/useSmoothScroll';
 
 export default function Home() {
+  useSmoothScroll();
   const [isLoading, setIsLoading] = useState(true);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
@@ -26,11 +25,6 @@ export default function Home() {
     };
 
     mediaQuery.addEventListener('change', handleChange);
-
-    // Initialize Lenis smooth scroll
-    if (!mediaQuery.matches) {
-      initLenis();
-    }
 
     // If user prefers reduced motion, skip preloader
     if (mediaQuery.matches) {

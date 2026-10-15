@@ -124,7 +124,7 @@ export default function Works() {
                       </p>
                       {/* Mobile image thumbnail */}
                       <div className="sm:hidden w-16 h-16 rounded-md overflow-hidden flex-shrink-0">
-                        <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                        <img src={project.image} alt={project.nda ? `${project.title} concept preview` : project.title} className={`w-full h-full ${project.nda ? 'object-contain bg-[#f5f7fa]' : 'object-cover'}`} />
                       </div>
                     </div>
                   </div>
@@ -185,7 +185,7 @@ export default function Works() {
           >
             {projects.map(p => (
               <div key={p.id} className="w-full relative" style={{ height: `${100 / projects.length}%` }}>
-                <img src={p.image} className="absolute inset-0 object-cover w-full h-full" alt="" />
+                <img src={p.image} className={`absolute inset-0 w-full h-full ${p.nda ? 'object-contain bg-[#f5f7fa]' : 'object-cover'}`} alt="" />
               </div>
             ))}
           </div>

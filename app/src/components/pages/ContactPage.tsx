@@ -1,12 +1,10 @@
-'use client';
-
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from '@/components/layout/Navbar';
 import Cursor from '@/components/layout/Cursor';
 import Magnetic from '@/components/ui/Magnetic';
-import { initLenis } from '@/lib/lenis';
+import { useSmoothScroll } from '@/lib/useSmoothScroll';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,12 +15,11 @@ const socialLinks = [
 ];
 
 export default function ContactPage() {
+  useSmoothScroll();
   const pageRef = useRef<HTMLDivElement>(null);
   const [currentTime, setCurrentTime] = useState('');
 
   useEffect(() => {
-    initLenis();
-
     // Update time
     const updateTime = () => {
       const now = new Date();
@@ -102,7 +99,7 @@ export default function ContactPage() {
   return (
     <>
       <Cursor />
-      <Navbar isVisible={true} variant="light" />
+      <Navbar pathname="/contact" isVisible={true} variant="light" />
 
       <main ref={pageRef}>
         {/* Hero Section */}

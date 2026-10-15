@@ -1,0 +1,20 @@
+---
+import ConceptScreen from '../../components/concepts/ConceptScreen';
+import '../../components/concepts/concepts.css';
+import { concepts } from '../../data/concepts';
+export function getStaticPaths() {
+  return concepts.map(concept => ({ params: { slug: concept.slug }, props: { concept } }));
+}
+const { concept } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{concept.title} — Illustrative interface | Kurt Gavin</title>
+    <meta name="description" content={`Original, unbranded ${concept.title.toLowerCase()} concept with fictional data. Not an actual client interface.`} />
+  </head>
+  <body><ConceptScreen concept={concept} /></body>
+</html>
