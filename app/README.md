@@ -23,11 +23,10 @@ npm run start
 - `src/layouts/BaseLayout.astro`: shared document, metadata and structured data.
 - `src/styles/globals.css`: preserved original portfolio styling.
 - `src/lib/lenis.ts`: Lenis/GSAP integration and cleanup.
-- `src/data/concepts.ts`: anonymous concept-screen metadata.
-- `src/components/concepts/`: static, original demo interfaces.
-- `src/pages/concepts/[slug].astro`: six generated concept pages; no client JavaScript or application backends.
-- `public/projects/`: screenshots rendered from the concept pages at 1440 px width.
+- `src/data/concepts.ts`: viewer metadata derived from the five NDA project records.
+- `src/pages/concepts/[slug].astro`: five responsive image viewers; no application backends.
+- `public/projects/`: five PNG recreations generated from user-supplied project screenshots, plus compressed WebP previews for portfolio cards.
 
-NDA screens contain fictional data and original layouts. They illustrate possible project structures, not actual client products, private designs, client names, source code, or verified feature claims. Keep this distinction visible when editing or sharing them. Concept pages are marked `noindex, nofollow`.
+NDA screens preserve the visible workflows in the supplied references, with fictional data, anonymous labels and original visual layouts. They are recreations, not actual client screenshots. Viewer pages are marked `noindex, nofollow`. The casino image shows the platform-facing lobby; it does not demonstrate the agent backend.
 
-Screens can be refreshed by building, opening each `/concepts/<slug>/` page through `npm run start`, and capturing a full-page 1440 px screenshot to its matching `public/projects/<slug>.jpg`. Rebuild afterward to include the updated assets.
+To refresh images, first obtain project-specific screenshots or confirmed workflow evidence. Generate a separate anonymous image for each reference, inspect it for accurate product structure and private identifiers, and replace the matching `public/projects/<slug>.png`. Never infer a generic dashboard from a project title. Rebuild and run `npm run verify` afterward.

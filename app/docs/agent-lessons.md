@@ -27,3 +27,10 @@
 - Remedy: Add trailing slashes to portfolio routes and normalize active navigation paths. Native navigation owns menu teardown.
 - Verification: Browser navigated Work hash → About → Contact on mobile after correction; npm run verify passes all ten pages.
 - Prevention/scope: scripts/verify-static.mjs rejects slashless page links, missing routes/assets and residual Next runtime. It reproduced 15 bad links before the fix, then passed after rebuild.
+
+## 2026-10-15 — Ground project visuals in the actual build
+- Trigger: User rejected the concept screenshots as inaccurate to the projects built.
+- Root cause: Screens were inferred from broad project categories and invented modules; synthetic-data labels did not make the product structure accurate.
+- Remedy: Use the five supplied application screenshots as functional references. Regenerate separate anonymous PNGs with original styling, remove the rejected generic dashboards and remove the Applied AI project at the user's request.
+- Prevention/scope: For portfolio project images, distinguish confirmed product functionality from illustrative appearance. Do not reuse generic dashboard structures as evidence of what the user built.
+- Evidence: Five PNGs in app/public/projects visually inspected against the references; npm run check has zero errors/warnings; npm run verify validates nine pages. All five viewers loaded at 390 px without horizontal overflow. Portfolio data and viewers share the same explicit project slugs.

@@ -28,3 +28,15 @@ Push verified changes and confirm production deployment.
 - All six concept pages fit 390 px without document overflow; full-screen concept return links work on mobile.
 - No browser errors during local validation. Code and TypeScript reviewers found no unresolved implementation issue after corrections.
 - npm audit retains seven inherited Tailwind 3 build-tool dependency advisories (2 moderate, 5 high). No forced breaking stylesheet upgrade; site exports static HTML/assets.
+
+## User correction — image accuracy
+The user rejected the six generic concept screens as inaccurate to the actual projects. The user then supplied five application screenshots. The correction replaces the previous concept implementation and assets.
+
+## Reference-based correction
+- Renamed GEO optimization platform to GEO platform. Removed Applied AI initiatives from project data and its route/image; AI career and journal content retained.
+- Generated five new PNGs with the built-in image generator, each using its supplied screenshot as a functional reference. Branding, private data and visual styling replaced. Original screenshot files are not published.
+- Construction now shows the owner workspace with CRM/BOM/project delivery. Accounting shows ledger workflows. Prediction market shows consumer event cards. Casino shows the platform-facing lobby, without claims about unseen agent operations. GEO shows AI visibility tracking.
+- Removed unused generic dashboard components and old JPEG assets. Five responsive viewers derive their content from project records.
+- npm run check: 0 errors, 0 warnings, 10 existing hints. npm run verify: 9 static pages and valid internal routes/assets.
+- Browser: 14 work cards, 5 NDA links, corrected visible count. Five images loaded at 390 px with no overflow; return link reached matching work anchor. Desktop construction viewer inspected. Original portfolio styles unchanged.
+- Code review caught a stale NDA count; now derived from data. Full-size PNGs stay in viewers; five compressed WebP card previews total 323 KB, avoiding 7.5 MB of homepage image downloads. Final code and TypeScript reviews have no remaining findings. Publication verification pending.

@@ -191,7 +191,7 @@ export default function AboutPage() {
                     I&apos;m Kurt Gavin, CTO at <a href="https://thirdcodesolutions.com/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Third Code Solutions Inc.</a>, based in the Philippines. My background spans full-stack software engineering, AI engineering, and UI/UX design and development.
                   </p>
                   <p className="text-fg/70 font-body leading-[1.8] text-[15px] sm:text-[16px] md:text-[17px] mb-8">
-                    My work includes a construction ERP, independent accounting software for private sectors, a Philippine prediction market, an online casino agent system, a GEO optimization platform and applied AI initiatives. These projects are under NDA, so their identities and implementation details remain private.
+                    My work includes a construction ERP, independent accounting software for private sectors, a Philippine prediction market, an online casino agent system and a GEO platform. These projects are under NDA, so their identities and implementation details remain private.
                   </p>
                   <div className="flex flex-wrap gap-3 sm:gap-4">
                     <Magnetic>

@@ -121,7 +121,7 @@ export default function WorkPage() {
                   products
                 </h1>
                 <span className="text-muted font-body text-sm sm:text-base hidden sm:inline-block">
-                  &mdash; {projects.length} projects · 6 under NDA
+                  &mdash; {projects.length} projects · {projects.filter(project => project.nda).length} under NDA
                 </span>
               </div>
             </div>
@@ -151,7 +151,7 @@ export default function WorkPage() {
                   <div className={`project-card-image relative overflow-hidden rounded-sm mb-5 sm:mb-6 ${index === 0 ? 'aspect-[16/8]' : 'aspect-[4/3]'}`}>
                     <img
                       src={project.image}
-                      alt={project.nda ? `${project.title} — original concept interface with fictional data` : project.title}
+                      alt={project.nda ? `${project.title} — recreated project interface with anonymized branding, data and visual design` : project.title}
                       loading={index === 0 ? 'eager' : 'lazy'}
                       data-parallax={project.nda ? undefined : true}
                       className={project.nda ? 'w-full h-full object-contain bg-[#f5f7fa]' : 'w-full h-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05] will-change-transform'}
@@ -163,7 +163,7 @@ export default function WorkPage() {
                     {/* View Project pill */}
                     <div className="absolute bottom-4 sm:bottom-6 right-4 sm:right-6 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
                       <div className="bg-white/90 backdrop-blur-sm rounded-full px-4 sm:px-5 py-2 sm:py-2.5">
-                        <span className="text-fg text-xs sm:text-sm font-body font-medium tracking-wide">{project.nda ? 'Explore concept screen' : project.link === '#' ? 'Project overview' : 'View Project'}</span>
+                        <span className="text-fg text-xs sm:text-sm font-body font-medium tracking-wide">{project.nda ? 'View recreated screen' : project.link === '#' ? 'Project overview' : 'View Project'}</span>
                       </div>
                     </div>
                   </div>
@@ -177,7 +177,7 @@ export default function WorkPage() {
                       <p className="text-sm sm:text-[15px] text-fg/60 font-body leading-relaxed max-w-md">
                         {project.description}
                       </p>
-                      {project.nda && <p className="text-xs text-fg/70 font-body mt-3">Illustrative interface · fictional data · View full screen ↗</p>}
+                      {project.nda && <p className="text-xs text-fg/70 font-body mt-3">Anonymized project recreation · View full screen ↗</p>}
                     </div>
                     <div className="flex items-center gap-3 sm:gap-4 flex-shrink-0 sm:pt-1">
                       <span className="text-[11px] sm:text-xs text-muted font-body uppercase tracking-[0.15em]">
@@ -192,7 +192,7 @@ export default function WorkPage() {
               );})}
             </div>
 
-            <p className="text-sm text-fg/70 font-body leading-relaxed mt-12 max-w-2xl">The six confidential projects are shared as anonymous overviews. Screens are original concept visualizations with fictional data, not actual client interfaces or verified feature lists. Client names, source code and private designs remain protected by NDA.</p>
+            <p className="text-sm text-fg/70 font-body leading-relaxed mt-12 max-w-2xl">Five confidential projects are shared as anonymous overviews. Screens are recreated from project references, with branding, data and visual design anonymized. Client names, source code and private designs remain protected by NDA.</p>
 
             {/* More Work CTA */}
             <div className="flex justify-center mt-20 sm:mt-24 md:mt-32">

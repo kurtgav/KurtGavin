@@ -124,7 +124,7 @@ export default function Works() {
                       </p>
                       {/* Mobile image thumbnail */}
                       <div className="sm:hidden w-16 h-16 rounded-md overflow-hidden flex-shrink-0">
-                        <img src={project.image} alt={project.nda ? `${project.title} concept preview` : project.title} className={`w-full h-full ${project.nda ? 'object-contain bg-[#f5f7fa]' : 'object-cover'}`} />
+                        <img src={project.image} loading="lazy" alt={project.nda ? `${project.title} recreated preview` : project.title} className={`w-full h-full ${project.nda ? 'object-contain bg-[#f5f7fa]' : 'object-cover'}`} />
                       </div>
                     </div>
                   </div>

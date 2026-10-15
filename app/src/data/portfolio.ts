@@ -1,63 +1,38 @@
-const confidentialProjects = [
+export const confidentialProjects = [
   {
+    slug: "construction-erp",
     title: "Construction ERP",
     category: "Enterprise systems",
-    number: "01",
     description:
-      "An ERP system built for a construction firm, bringing its business operations into a dedicated software platform.",
-    focus: "Construction · Enterprise software",
-    mark: "ERP",
-    color: "lime",
+      "An ERP system for a construction firm, connecting CRM, sales pipelines, accounts and KYC with projects, BOM estimates, takeoff, planning and controls. Its operations workspace covers permits, punch lists, documents, deliveries, RFQs, purchase orders and inventory.",
   },
   {
+    slug: "independent-accounting",
     title: "Independent accounting",
     category: "Enterprise systems",
-    number: "02",
     description:
-      "An independent accounting system developed for private-sector organizations and their financial workflows.",
-    focus: "Private sector · Accounting",
-    mark: "ACCT",
-    color: "sand",
+      "An independent accounting system for private-sector organizations, with cash, receivables, payables and net-result reporting. Financial workflows include payment batches, bank reconciliation, financial statements, VAT and withholding, migration, retained history and a work queue.",
   },
   {
+    slug: "prediction-market",
     title: "Philippine prediction market",
     category: "Market platforms",
-    number: "03",
     description:
-      "A Philippine-focused prediction market and gambling platform. Product identity and implementation details remain confidential.",
-    focus: "Philippines · Prediction markets",
-    mark: "P / M",
-    color: "blue",
+      "A Philippine prediction marketplace organized around topical market cards, YES/NO probabilities and peso-denominated volume. The consumer-facing interface brings together categories, breaking stories and hot topics.",
   },
   {
+    slug: "casino-agent-system",
     title: "Casino agent system",
     category: "Market platforms",
-    number: "04",
     description:
-      "An agent system developed for online casino operations, with the client, operating model and technical details covered by NDA.",
-    focus: "Online casino · Agent operations",
-    mark: "AGNT",
-    color: "rose",
+      "An online casino project shown through its platform-facing consumer lobby: live casino, slots, table games, fishing games and crash mini-games, alongside rewards, VIP access and a shared wallet. This preview presents the lobby view; private agent operations remain undisclosed.",
   },
   {
-    title: "GEO optimization platform",
+    slug: "geo-platform",
+    title: "GEO platform",
     category: "AI & intelligence",
-    number: "05",
     description:
-      "A generative engine optimization platform focused on visibility in AI-powered discovery and search experiences.",
-    focus: "Generative search · AI visibility",
-    mark: "GEO",
-    color: "blue",
-  },
-  {
-    title: "Applied AI initiatives",
-    category: "AI & intelligence",
-    number: "06",
-    description:
-      "AI engineering initiatives spanning practical experiments and application development. Individual project scopes remain confidential.",
-    focus: "Applied AI · Product development",
-    mark: "AI /",
-    color: "lime",
+      "A GEO platform for tracking AI visibility, trends, prompts, citations and competitors. Its Track, Act and Connect workspaces bring together brand monitoring, alerts and reports around AI-powered discovery.",
   },
 ] as const;
 
@@ -284,9 +259,9 @@ export const portfolioProjects: PortfolioProject[] = [
     title: project.title,
     category: project.category,
     year: 'NDA',
-    image: '/projects/' + ['construction-erp', 'independent-accounting', 'prediction-market', 'casino-agent-system', 'geo-platform', 'ai-initiatives'][index] + '.jpg',
-    slug: ['construction-erp', 'independent-accounting', 'prediction-market', 'casino-agent-system', 'geo-platform', 'ai-initiatives'][index],
-    link: '/work/#' + ['construction-erp', 'independent-accounting', 'prediction-market', 'casino-agent-system', 'geo-platform', 'ai-initiatives'][index],
+    image: `/projects/${project.slug}.webp`,
+    slug: project.slug,
+    link: `/work/#${project.slug}`,
     description: project.description,
     nda: true,
   })),
